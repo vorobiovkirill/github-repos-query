@@ -15,7 +15,7 @@ export const FavoriteRepoList: React.FC<IFavoriteRepoList> = ({ repos, isLoading
         <div>
             <h3 className="text-3xl font-bold dark:text-white">Favorite Repositories</h3>
             <ul className="mt-10">
-                {repos.map(repo => <FavoriteRepo repo={repo} />)}
+                {repos.map(repo => <FavoriteRepo key={repo.id} repo={repo} />)}
             </ul>
         </div>
     )

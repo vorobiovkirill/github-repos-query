@@ -36,9 +36,10 @@ export const repoReducer = (state: AppState, action: AppActions): AppState  => {
                 repos: payload
             }
         case Actions.ADD_FAVORITE_REPOS:
+            const data = [...new Set(state.favoriteRepos.concat(payload))];
             return {
                 ...state,
-                favoriteRepos: payload
+                favoriteRepos: data
             }
         case Actions.ADD_LANGUAGES:
             return {

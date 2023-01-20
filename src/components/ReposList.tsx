@@ -19,7 +19,7 @@ export const ReposList: React.FC<IReposList> = ({ repos, isLoading, addToFavorit
         <div>
             <h3 className="text-3xl font-bold dark:text-white">Founded Repositories:</h3>
             <ul className="mt-10">
-                {data.map(repo => <Repo repo={repo} addToFavoriteRepos={addToFavoriteRepos} />)}
+                {data.map(repo => <Repo key={repo.id} repo={repo} addToFavoriteRepos={addToFavoriteRepos} />)}
             </ul>
         </div>
     )

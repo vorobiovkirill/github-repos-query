@@ -19,7 +19,7 @@ const initialState: AppState = {
 }
 
 function App() {
-  const [localStorageValue, setToLocalStorage] = useLocalStorage("favoriteRepos", "");
+  const [localStorageValue, setToLocalStorage] = useLocalStorage("favoriteRepos", []);
   const [state, dispatch] = useReducer(repoReducer, initialState);
 
   const setIsLoading = (loading: boolean) => dispatch({ type: Actions.ADD_LANGUAGES, payload: loading })
@@ -45,9 +45,8 @@ function App() {
     const item = state.repos.find((repo: RepositoryData) => repo.id === data.id)
 
     if (item) {
-      const result = [...new Set(state.favoriteRepos.concat(item))]
-      dispatch({ type: Actions.ADD_FAVORITE_REPOS, payload: result })
-      setToLocalStorage(result);
+      dispatch({ type: Actions.ADD_FAVORITE_REPOS, payload: item })
+      setToLocalStorage(state.favoriteRepos);
     }
   }
 
