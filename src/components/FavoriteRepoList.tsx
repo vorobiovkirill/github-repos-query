@@ -1,3 +1,4 @@
+import React from 'react';
 import type { RepositoryData } from '../types';
 import { FavoriteRepo } from './FavoriteRepo';
 
@@ -6,7 +7,7 @@ interface IFavoriteRepoList {
     isLoading: boolean;
 }
 
-export const FavoriteRepoList: React.FC<IFavoriteRepoList> = ({ repos, isLoading }) => {
+export const FavoriteRepoList: React.FC<IFavoriteRepoList> = React.memo(({ repos, isLoading }) => {
     if (!repos) return null;
 
     if (!repos.length && !isLoading) return <p>Favorite repositories is empty</p>
@@ -19,4 +20,4 @@ export const FavoriteRepoList: React.FC<IFavoriteRepoList> = ({ repos, isLoading
             </ul>
         </div>
     )
-}
+})
